@@ -26,8 +26,12 @@ includeWords = [
 
 # if a question starts with one of these words, ignore it
 # possible to ask 'do you know who?' which would be a y/n.
-excludeWords = [
+excludeStartWords = [
     "what", "why", "when", "how", "where", "who", "whom"
+]
+
+excludeWords = [
+    "or"
 ]
 
 magic8Responses = list()
@@ -64,8 +68,9 @@ async def on_message(message):
         if "outlook" in msg: await message.channel.send("Fuck Outlook")  # fuck outlook
         # respond in a smart way to y/n questions? question has 'is' or 'does' 'can' 'will' 'are' 'do' 'you I'
 
-        for word in excludeWords:
+        for word in excludeStartWords:
             if msg.startswith(word): return
+            if any(word in msg_ for word in excludeWords): return
 
         # if msg contains one of the include words, reply
         if any(word in msg_ for word in includeWords):
