@@ -50,8 +50,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    msg = message.content.lower().replace('?', '')
-    msg_ = msg.split()
+    msg = message.content.lower()
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
@@ -60,6 +59,8 @@ async def on_message(message):
         await message.channel.send("whomst'd've'ly'yaint'nt'ed'ies's'y'es'nt'ed'ies's'y'es'nt't're'ing'able'ric'ive'al'nt'ne'm'll'ble'al")  # fuck outlook
 
     if msg.endswith('?'):
+        msg = msg.replace('?', '')
+        msg_ = msg.split()
         if "outlook" in msg: await message.channel.send("Fuck Outlook")  # fuck outlook
         # respond in a smart way to y/n questions? question has 'is' or 'does' 'can' 'will' 'are' 'do' 'you I'
 
