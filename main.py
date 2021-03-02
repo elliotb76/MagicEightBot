@@ -50,7 +50,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    msg = message.content.lower()
+    msg = message.content.lower().replace('?', '')
     msg_ = msg.split()
 
     if message.content.startswith('$hello'):
