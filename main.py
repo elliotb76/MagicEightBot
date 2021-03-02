@@ -24,8 +24,8 @@ includeWords = [
     "than", "good", "bad"
 ]
 
-# if a question contains these words, ignore it
-# possible to ask 'do you know who?' which would be a y/n. How to handle?
+# if a question starts with one of these words, ignore it
+# possible to ask 'do you know who?' which would be a y/n.
 excludeWords = [
     "what", "why", "when", "how", "where", "who", "whom"
 ]
