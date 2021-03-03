@@ -18,9 +18,9 @@ magic8Responses1 = [
     "Very doubtful."
 ]
 
-monkeResponses = {
+monkeResponses = [
     "Did someone say... monke?", "M O N K E", "Apes together strong", "Uh ohh...", "where banana"
-}
+]
 
 whomstResponses = [
     "'ly", "'yaint", "'nt", "'ed", "'ies", "'s", "'y", "'es", "'nt", "'ed", "'ies", "'s", "'y", "'es", "'nt", "'t", "'re", "'ing", "'able", "'ric", "'ive", "'al", "'nt", "'ne", "'m", "'ll", "'ble", "'al"
@@ -66,7 +66,7 @@ async def on_message(message):
     msg = message.content.lower()
     msgStripped = msg.replace(' ', '')
 
-    if "monke" in msgStripped:
+    if msgStripped.find("monke") != -1:
         await message.channel.send(random.choice(monkeResponses))
 
     if message.content.startswith('$hello'):
