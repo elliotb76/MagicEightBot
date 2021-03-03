@@ -73,6 +73,7 @@ async def on_message(message):
         await message.channel.send('Hello!')
 
     if "whomst" in msg:
+        await message.channel.send("whomst test?")
         whomstResponseMessage = ''
         whomstResponsesTemp = whomstResponses
         whomstLength = len(whomstResponses)-1
