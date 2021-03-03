@@ -3,7 +3,6 @@ import discord
 import os
 import json
 import random
-from random import randrange
 from dotenv import load_dotenv, find_dotenv
 from datetime import datetime
 
