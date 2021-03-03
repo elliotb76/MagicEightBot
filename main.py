@@ -43,9 +43,9 @@ excludeWords = [
 ]
 
 magic8Responses = list()
-responsesFilePath = os.getcwd() + "responses.json"
+responsesFilePath = os.getcwd() + os.sep + "responses.json"
 
-with open('/home/pi/scripts/MagicEightBot/responses.json') as file:
+with open(responsesFilePath) as file:
     responses = json.load(file)
     for item in responses:
         magic8Responses.append(item)
@@ -73,15 +73,18 @@ async def on_message(message):
         await message.channel.send('Hello!')
 
     if "whomst" in msg:
-        # await message.channel.send("whomst test?")
-        whomstResponseMessage = ''
-        whomstResponsesTemp = whomstResponses
-        whomstLength = len(whomstResponses)-1
-        for x in random.randint(whomstLength-24, whomstLength):
-            await message.channel.send("random whomst append: " + whomstResponsesTemp[random.randint(whomstLength)])
-            whomstResponseMessage += whomstResponsesTemp[random.randint(whomstLength)]
-            whomstResponsesTemp.remove(whomstResponsesTemp[x])
+        whomstResponseMessage = 'whomst'
+        whomstResponsesTemp = whomstResponses[:]
+        # print("list length: " + str(len(whomstResponses)))
+        numEndings = random.randint(2, len(whomstResponses)-1)
+        # print("Expected number of endings: " + str(numEndings))
+        for x in range(numEndings):
+            randEndingIndex = random.randint(0, len(whomstResponsesTemp)-1)
+            # print("Index of ending to add: " + str(randEndingIndex))
+            whomstResponseMessage += whomstResponsesTemp[randEndingIndex]
+            whomstResponsesTemp.remove(whomstResponsesTemp[randEndingIndex])
         await message.channel.send(whomstResponseMessage)  # WHOMST
+        # print(whomstResponseMessage)
 
     if msg.endswith('?'):
         msg = msg.replace('?', '')
