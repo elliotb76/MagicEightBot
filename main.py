@@ -3,6 +3,7 @@ import discord
 import os
 import json
 import random
+from random import randrange
 from dotenv import load_dotenv, find_dotenv
 from datetime import datetime
 
@@ -18,6 +19,14 @@ magic8Responses1 = [
     "Very doubtful."
 ]
 
+monkeResponses = {
+    "Did someone say... monke?", "M O N K E", "Apes together strong", "Uh ohh...", "where banana"
+}
+
+whomstResponses = [
+    "'ly", "'yaint", "'nt", "'ed", "'ies", "'s", "'y", "'es", "'nt", "'ed", "'ies", "'s", "'y", "'es", "'nt", "'t", "'re", "'ing", "'able", "'ric", "'ive", "'al", "'nt", "'ne", "'m", "'ll", "'ble", "'al"
+]
+
 # if a question contains one of these words, we should probably respond
 includeWords = [
     "is", "am", "are", "was", "were", "do", "does", "did", "will", "can", "could", "should", "would", "has", "have",
@@ -27,7 +36,7 @@ includeWords = [
 # if a question starts with one of these words, ignore it
 # possible to ask 'do you know who?' which would be a y/n.
 excludeStartWords = [
-    "what", "why", "when", "how", "where", "who", "whom"
+    "what", "why", "when", "how", "where", "who"
 ]
 
 excludeWords = [
@@ -55,12 +64,22 @@ async def on_message(message):
         return
 
     msg = message.content.lower()
+    msgStripped = msg.replace(' ', '')
+
+    if "monke" in msgStripped:
+        await message.channel.send(random.choice(monkeResponses))
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
     if "whomst" in msg:
-        await message.channel.send("whomst'd've'ly'yaint'nt'ed'ies's'y'es'nt'ed'ies's'y'es'nt't're'ing'able'ric'ive'al'nt'ne'm'll'ble'al")  # fuck outlook
+        whomstResponseMessage = ''
+        whomstResponsesTemp = whomstResponses
+        whomstLength = len(whomstResponses)-1
+        for x in random.randint(whomstLength-24, whomstLength):
+            whomstResponseMessage += whomstResponsesTemp[random.randint(whomstLength)]
+            whomstResponsesTemp.remove(whomstResponsesTemp[x])
+        await message.channel.send(whomstResponseMessage)  # WHOMST
 
     if msg.endswith('?'):
         msg = msg.replace('?', '')
