@@ -1,6 +1,6 @@
 # created with https://www.freecodecamp.org/news/create-a-discord-bot-with-python/
 import discord
-import os
+import os, sys
 import json
 import random
 from dotenv import load_dotenv, find_dotenv
@@ -35,7 +35,7 @@ includeWords = [
 # if a question starts with one of these words, ignore it
 # possible to ask 'do you know who?' which would be a y/n.
 excludeStartWords = [
-    "what", "why", "when", "how", "where", "who"
+    "what", "why", "when", "how", "where", "who", "whose"
 ]
 
 excludeWords = [
@@ -43,6 +43,7 @@ excludeWords = [
 ]
 
 magic8Responses = list()
+responsesFilePath = os.getcwd() + "responses.json"
 
 with open('/home/pi/scripts/MagicEightBot/responses.json') as file:
     responses = json.load(file)
@@ -72,11 +73,12 @@ async def on_message(message):
         await message.channel.send('Hello!')
 
     if "whomst" in msg:
-        await message.channel.send("whomst test?")
+        # await message.channel.send("whomst test?")
         whomstResponseMessage = ''
         whomstResponsesTemp = whomstResponses
         whomstLength = len(whomstResponses)-1
         for x in random.randint(whomstLength-24, whomstLength):
+            await message.channel.send("random whomst append: " + whomstResponsesTemp[random.randint(whomstLength)])
             whomstResponseMessage += whomstResponsesTemp[random.randint(whomstLength)]
             whomstResponsesTemp.remove(whomstResponsesTemp[x])
         await message.channel.send(whomstResponseMessage)  # WHOMST
