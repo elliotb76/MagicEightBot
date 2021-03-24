@@ -18,6 +18,18 @@ magic8Responses1 = [
     "Very doubtful."
 ]
 
+uWuWords = [
+    "uwu", "owo", "daddy"
+]
+
+uWuResponses = [
+    "(° ͜ʖ °)", "( ͡° ͜ʖ ͡°)", "( ͡° ͜ʖ ͡°)╭∩╮", "( ͡~ ͜ʖ ͡°)", "( ͡◉ ͜ʖ ͡◉)", "[̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]", "( ͡ಠ ʖ̯ ͡ಠ)", "╭∩╮( ͡° ل͟ ͡° )╭∩╮", "( ͡° ͜ʖ ͡°)︻̷┻̿═━一-", "(ง ͡° ͜ʖ ͡°)=/̵͇̿̿/'̿'̿̿̿ ̿ ̿̿'", "( ͡◕ ͜ʖ ͡◕)", "(◉͜ʖ◉)", "(つ ♥ ͜ʖ ♥)つ", "( ͝סּ ͜ʖ͡סּ)"
+]
+
+monkeWords = [
+    "monke", "ape"
+]
+
 monkeResponses = [
     "Did someone say... monke?", "M O N K E", "Apes together strong", "Uh ohh...", "where banana"
 ]
@@ -101,6 +113,11 @@ async def on_message(message):
             await message.channel.send(random.choice(responses))
             print(datetime.now().strftime("%d/%m/%Y %H:%M:%S") + ' -- Replying to question')
             # add TTS in the future?
+
+    msg_ = msg.split()
+    if any(word in msg_ for word in uWuWords):
+        await message.channel.send("What's this?")
+        #await message.channel.send(random.choice(uWuResponses))
 
 load_dotenv(find_dotenv())
 client.run(os.getenv('TOKEN'))
