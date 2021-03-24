@@ -122,7 +122,7 @@ async def on_message(message):
         else:
             await message.channel.send(random.choice(uWuResponses))
 
-load_dotenv('---.env')
+load_dotenv(find_dotenv())
 client.run(os.getenv('TOKEN'))
 print(datetime.now().strftime("%d/%m/%Y %H:%M:%S") + ' -- Client exiting')
 
