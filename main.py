@@ -116,12 +116,12 @@ async def on_message(message):
 
     msg_ = msg.split()
     if any(word in msg_ for word in uWuWords):
-        await message.channel.send("What's this?")
-#        uWuRand = random.randint(0, 1)
-#        if uWuRand == 0:
-#            await message.channel.send("What's this?")
-#        else:
-#            await message.channel.send(random.choice(uWuResponses))
+        # await message.channel.send("What's this?")
+        uWuRand = random.randint(0, 1)
+        if uWuRand == 0:
+            await message.channel.send("What's this?")
+        else:
+            await message.channel.send(random.choice(uWuResponses))
 
 load_dotenv(find_dotenv())
 client.run(os.getenv('TOKEN'))
