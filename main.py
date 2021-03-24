@@ -23,7 +23,7 @@ uWuWords = [
 ]
 
 uWuResponses = [
-    "(° ͜ʖ °)", "( ͡° ͜ʖ ͡°)", "( ͡° ͜ʖ ͡°)╭∩╮", "( ͡~ ͜ʖ ͡°)", "( ͡◉ ͜ʖ ͡◉)", "[̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]", "( ͡ಠ ʖ̯ ͡ಠ)", "╭∩╮( ͡° ل͟ ͡° )╭∩╮", "( ͡° ͜ʖ ͡°)︻̷┻̿═━一-", "(ง ͡° ͜ʖ ͡°)=/̵͇̿̿/'̿'̿̿̿ ̿ ̿̿'", "( ͡◕ ͜ʖ ͡◕)", "(◉͜ʖ◉)", "(つ ♥ ͜ʖ ♥)つ", "( ͝סּ ͜ʖ͡סּ)"
+    "What's this?", "(° ͜ʖ °)", "( ͡° ͜ʖ ͡°)", "( ͡° ͜ʖ ͡°)╭∩╮", "( ͡~ ͜ʖ ͡°)", "( ͡◉ ͜ʖ ͡◉)", "[̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]", "( ͡ಠ ʖ̯ ͡ಠ)", "╭∩╮( ͡° ل͟ ͡° )╭∩╮", "( ͡° ͜ʖ ͡°)︻̷┻̿═━一-", "(ง ͡° ͜ʖ ͡°)=/̵͇̿̿/'̿'̿̿̿ ̿ ̿̿'", "( ͡◕ ͜ʖ ͡◕)", "(◉͜ʖ◉)", "(つ ♥ ͜ʖ ♥)つ", "( ͝סּ ͜ʖ͡סּ)"
 ]
 
 monkeWords = [
@@ -116,8 +116,11 @@ async def on_message(message):
 
     msg_ = msg.split()
     if any(word in msg_ for word in uWuWords):
-        await message.channel.send("What's this?")
-        #await message.channel.send(random.choice(uWuResponses))
+        uWuRand = random.randint(0, 1)
+        if uWuRand == 0:
+            await message.channel.send("What's this?")
+        else:
+            await message.channel.send(random.choice(uWuResponses))
 
 load_dotenv(find_dotenv())
 client.run(os.getenv('TOKEN'))
