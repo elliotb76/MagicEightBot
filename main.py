@@ -19,7 +19,7 @@ magic8Responses1 = [
 ]
 
 uWuWords = [
-    "uwu", "owo", "daddy", "moist"
+    "uwu", "owo", "daddy", "moist", "daddi"
 ]
 
 uWuResponses = [
