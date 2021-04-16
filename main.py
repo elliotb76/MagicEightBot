@@ -47,7 +47,7 @@ includeWords = [
 # if a question starts with one of these words, ignore it
 # possible to ask 'do you know who?' which would be a y/n.
 excludeStartWords = [
-    "what", "why", "when", "how", "where", "who", "whose"
+    "what", "why", "when", "how", "where", "who", "whose", "which"
 ]
 
 excludeWords = [
