@@ -35,6 +35,10 @@ monkeResponses = [
     "Did someone say... monke?", "M O N K E", "Apes together strong", "Uh ohh...", "where banana"
 ]
 
+neweggResponse = [
+    "I've been tempted to buy from Newegg on occasion but this story has ended that. Thank you Gamers Nexus because life is hard enough as it is without being subjected to financial abuse."
+]
+
 whomstResponses = [
     "'ly", "'yaint", "'nt", "'ed", "'ies", "'s", "'y", "'es", "'nt", "'ed", "'ies", "'s", "'y", "'es", "'nt", "'t", "'re", "'ing", "'able", "'ric", "'ive", "'al", "'nt", "'ne", "'m", "'ll", "'ble", "'al"
 ]
@@ -98,6 +102,9 @@ async def on_message(message):
             whomstResponsesTemp.remove(whomstResponsesTemp[randEndingIndex])
         await message.channel.send(whomstResponseMessage)  # WHOMST
         # print(whomstResponseMessage)
+
+    if "newegg" in msg:
+        await message.channel.send(neweggResponse)  # WHOMST
 
     if msg.endswith('?'):
         msg = msg.replace('?', '')
