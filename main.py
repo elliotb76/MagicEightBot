@@ -104,7 +104,7 @@ async def on_message(message):
         # print(whomstResponseMessage)
 
     if "newegg" in msg:
-        await message.channel.send(neweggResponse)  # WHOMST
+        await message.channel.send(neweggResponse[0])  # WHOMST
 
     if msg.endswith('?'):
         msg = msg.replace('?', '')
